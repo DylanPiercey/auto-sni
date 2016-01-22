@@ -1,0 +1,33 @@
+{
+  "name": "auto-sni",
+  "version": "0.0.2",
+  "description": "Automatically generate tls credentials using letsencrypt.",
+  "author": "Dylan Piercey <pierceydylan@gmail.com>",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DylanPiercey/auto-sni"
+  },
+  "keywords": [
+    "http",
+    "https",
+    "ssl",
+    "tls",
+    "secure",
+    "sni",
+    "auto-sni",
+    "web"
+  ],
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.2.0"
+  },
+  "dependencies": {
+    "find-node-modules": "^1.0.1",
+    "http-both": "^0.1.0",
+    "letsencrypt-cli": "^1.0.7",
+    "mz": "^2.1.0",
+    "node-static": "^0.7.7"
+  }
+}

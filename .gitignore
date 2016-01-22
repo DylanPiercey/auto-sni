@@ -1,0 +1,11 @@
+## Directory-based project format
+*.sublime*
+
+# OSX
+*.DS_Store
+
+node_modules
+run.js
+
+# Compiled JS
+bin
