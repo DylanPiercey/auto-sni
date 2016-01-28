@@ -24,9 +24,8 @@
     "gulp-mocha": "^2.2.0"
   },
   "dependencies": {
-    "find-node-modules": "^1.0.1",
     "http-both": "^0.1.0",
-    "letsencrypt-cli": "^1.0.7",
+    "letsencrypt": "^1.4.0",
     "mz": "^2.1.0",
     "node-static": "^0.7.7"
   }
