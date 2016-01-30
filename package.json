@@ -1,6 +1,6 @@
 {
   "name": "auto-sni",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Automatically generate tls credentials using letsencrypt.",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "main": "lib/index.js",
@@ -24,7 +24,6 @@
     "gulp-mocha": "^2.2.0"
   },
   "dependencies": {
-    "http-both": "^0.1.0",
     "letsencrypt": "^1.4.0",
     "mkdirp-promise": "^1.0.3",
     "mz": "^2.1.0",

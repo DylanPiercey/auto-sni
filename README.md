@@ -14,16 +14,21 @@ npm install auto-sni
 # Example
 
 ```javascript
-var https = require("auto-sni");
+var createServer = require("auto-sni");
 
-https.createServer({
+createServer({
 	email: ..., // Emailed when certificates expire.
 	agreeTos: true, // Required for letsencrypt.
 	debug: true, // Add console messages.
-	duplicate: true // Create new certificates before they expire.
-}, function handler (req, res) {
+	ports: {
+		http: 80, // Optionally override the default http port.
+		https: 443 // // Optionally override the default https port.
+	}
+}, function (req, res) {
 	// Handle request...
-});
+}).then(function () {
+	// Returns a promise that will throw if the server cannot be initialized.
+})
 ```
 
 ### Contributions
