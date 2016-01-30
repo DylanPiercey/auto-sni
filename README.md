@@ -26,6 +26,13 @@ createServer({
 	agreeTos: true, // Required for letsencrypt.
 	debug: true, // Add console messages.
 	domains: ["test.com", "(dev|staging|production).test.com"], // Optional list of allowed domains (uses pathtoregexp)
+	subject: { // Subject is optional and is used when creating certificates.
+		country: "US", // C
+		state: "AZ", // ST
+		location: "Phoenix", // L
+		organization: "My Company", // O
+		unit: "Telecom", // OU
+	},
 	ports: {
 		http: 80, // Optionally override the default http port.
 		https: 443 // // Optionally override the default https port.
