@@ -1,6 +1,5 @@
 # Auto SNI
 SSL Certificates using SNI with almost zero configuration for free with https://letsencrypt.org!
-If creating a certificate fails it will fall back to a simple self signed certificate.
 
 This module has yet to be thoroughly tested but feel free to give it a shot!
 
@@ -10,6 +9,12 @@ This module has yet to be thoroughly tested but feel free to give it a shot!
 ```console
 npm install auto-sni
 ```
+
+# Features
++ Fetch SSL certificates from letsencrypt.
++ Automatically renew certificates.
++ If creating a certificate fails it will fall back to a simple self signed certificate.
++ Forward all incomming http requests to https.
 
 # Example
 
