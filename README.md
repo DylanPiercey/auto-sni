@@ -27,7 +27,9 @@ createServer({
 }, function (req, res) {
 	// Handle request...
 }).then(function () {
-	// Returns a promise that will throw if the server cannot be initialized.
+	// Returns a promise that resolves when both the http and https server are listening.
+}).catch(function (e) {
+	// Errors if there is an issue starting either server.
 })
 ```
 
