@@ -1,7 +1,10 @@
 # Auto SNI
 SSL Certificates using SNI with almost zero configuration for free with https://letsencrypt.org!
-
 This module has yet to be thoroughly tested but feel free to give it a shot!
+
+If you have any questions, throw them up on gitter.
+
+[![Join the chat at https://gitter.im/DylanPiercey/auto-sni](https://badges.gitter.im/DylanPiercey/auto-sni.svg)](https://gitter.im/DylanPiercey/auto-sni?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # Installation
 
@@ -26,6 +29,7 @@ createServer({
 	agreeTos: true, // Required for letsencrypt.
 	debug: true, // Add console messages.
 	domains: ["test.com", "(dev|staging|production).test.com"], // Optional list of allowed domains (uses pathtoregexp)
+	forceSSL: true, // Make this false to disable auto http->https redirects (default true).
 	ports: {
 		http: 80, // Optionally override the default http port.
 		https: 443 // // Optionally override the default https port.
