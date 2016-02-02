@@ -68,7 +68,7 @@ createServer({ email: ..., agreeTos: true }, app.callback());
 ### Usage with rill.
 ```js
 var createServer = require("auto-sni");
-var koa          = require("rill");
+var rill         = require("rill");
 var app          = rill();
 
 app.get("/test", ...);
