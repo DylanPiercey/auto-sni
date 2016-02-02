@@ -24,7 +24,7 @@ npm install auto-sni
 ```javascript
 var createServer = require("auto-sni");
 
-createServer({
+var server = createServer({
 	email: ..., // Emailed when certificates expire.
 	agreeTos: true, // Required for letsencrypt.
 	debug: true, // Add console messages.
@@ -34,13 +34,13 @@ createServer({
 		http: 80, // Optionally override the default http port.
 		https: 443 // // Optionally override the default https port.
 	}
-}, function (req, res) {
-	// Handle request...
-}).then(function () {
-	// Returns a promise that resolves when both the http and https server are listening.
-}).catch(function (e) {
-	// Errors if there is an issue starting either server.
-})
+});
+
+// Server is a "https.createServer" instance.
+server.once("listening", ()=> {
+	console.log("We are ready to go.");
+});
+
 ```
 
 ### Usage with express.
@@ -71,9 +71,55 @@ var createServer = require("auto-sni");
 var koa          = require("rill");
 var app          = rill();
 
-app.use(...);
+app.get("/test", ...);
 
 createServer({ email: ..., agreeTos: true }, app.handler());
+```
+
+### Usage with hapi.
+```js
+// Untested (Let me know in gitter if this doesn't work.)
+var createServer = require("auto-sni");
+var hapi         = require("hapi");
+var server       = new hapi.Server();
+var secureServer = createServer({ email: ..., agreeTos: true });
+
+server.connection({ listener: secureServer, autoListen: false, tls: true });
+```
+
+### Usage with restify.
+```js
+// Untested (Let me know in gitter if this doesn't work.)
+var createServer = require("auto-sni");
+var restify      = require("restify");
+
+// Override the https module in AutoSNI with restify.
+createServer.https = restify.createServer;
+
+var app = createServer({ email: ..., agreeTos: true });
+app.get("/test", ...);
+```
+
+# Root Access
+AutoSNI requires access to low level ports 80 (http) and 443 (https) to operate by default.
+These ports are typically restricted by the operating system.
+
+In production (on linux servers) you can use the following command to give Node access to these ports.
+
+```console
+sudo setcap cap_net_bind_service=+ep $(which node)
+```
+
+For development it's best to set the "ports" option manually to something like:
+```js
+{
+	ports: {
+		http: 3001,
+		https: 3002
+	}
+}
+
+// Access server on localhost:3002
 ```
 
 ### Contributions
