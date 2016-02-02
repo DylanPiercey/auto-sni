@@ -122,6 +122,15 @@ For development it's best to set the "ports" option manually to something like:
 // Access server on localhost:3002
 ```
 
+# Rate Limits
+Currently LetsEncrypt beta imposes some rate limits on certificate creation.
+These will likely increase over time. There are also talks of LetsEncrypt creating a form to increase the amount.
+
+The current rates are:
+
+* 10 new registrations every 3 hours.
+* 5 certificates per domain every 7 days.
+
 ### Contributions
 
 Please feel free to create a PR!
