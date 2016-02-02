@@ -17,7 +17,7 @@ npm install auto-sni
 + Fetch SSL certificates from letsencrypt.
 + Automatically renew certificates.
 + If creating a certificate fails it will fall back to a simple self signed certificate.
-+ Forward all incomming http requests to https.
++ Forward all incoming http requests to https.
 
 # Example
 
