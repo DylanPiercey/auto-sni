@@ -1,11 +1,14 @@
-## Directory-based project format
+# Editors
 *.sublime*
 
 # OSX
 *.DS_Store
 
+# Node JS
 node_modules
-run.js
 
 # Compiled JS
 bin
+
+# ACME Challenges
+static
