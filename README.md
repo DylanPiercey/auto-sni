@@ -1,4 +1,7 @@
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 # Auto SNI
+
 SSL Certificates using SNI with almost zero configuration for free with https://letsencrypt.org!
 This module has yet to be thoroughly tested but feel free to give it a shot!
 

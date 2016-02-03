@@ -9,6 +9,9 @@
     "type": "git",
     "url": "https://github.com/DylanPiercey/auto-sni"
   },
+  "scripts": {
+    "test": "standard"
+  },
   "keywords": [
     "http",
     "https",
@@ -25,7 +28,8 @@
   ],
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-mocha": "^2.2.0"
+    "gulp-mocha": "^2.2.0",
+    "standard": "^5.4.1"
   },
   "dependencies": {
     "letsencrypt": "^1.4.0",
