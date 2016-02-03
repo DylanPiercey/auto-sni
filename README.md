@@ -29,7 +29,7 @@ var createServer = require("auto-sni");
 var server = createServer({
 	email: ..., // Emailed when certificates expire.
 	agreeTos: true, // Required for letsencrypt.
-	debug: true, // Add console messages.
+	debug: true, // Add console messages and uses staging LetsEncrypt server. (Disable in production)
 	domains: ["test.com", "(dev|staging|production).test.com"], // Optional list of allowed domains (uses pathtoregexp)
 	forceSSL: true, // Make this false to disable auto http->https redirects (default true).
 	ports: {
