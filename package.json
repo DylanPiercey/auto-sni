@@ -1,6 +1,6 @@
 {
   "name": "auto-sni",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Automatically generate tls credentials using letsencrypt.",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "main": "lib/index.js",
@@ -10,7 +10,7 @@
     "url": "https://github.com/DylanPiercey/auto-sni"
   },
   "scripts": {
-    "test": "standard --verbose | snazzy"
+    "test": "standard --verbose | snazzy && node ./test main"
   },
   "keywords": [
     "http",
@@ -20,6 +20,7 @@
     "secure",
     "sni",
     "auto-sni",
+    "lets-encrypt",
     "letsencrypt",
     "letsencrypt-auto",
     "auto",
@@ -27,13 +28,17 @@
     "web"
   ],
   "devDependencies": {
+    "ngrok": "^0.2.2",
     "snazzy": "^2.0.1",
-    "standard": "^5.4.1"
+    "standard": "^6.0.4",
+    "supertest": "^1.1.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.4.0"
   },
   "dependencies": {
     "letsencrypt": "^1.4.0",
     "mkdirp-promise": "^1.0.3",
-    "mz": "^2.1.0",
+    "mz": "^2.3.1",
     "node-static": "^0.7.7",
     "path-to-regexp": "^1.2.1",
     "safetimeout": "^0.1.1"
