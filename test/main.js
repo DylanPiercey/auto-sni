@@ -29,8 +29,25 @@ test('required fields', function (t) {
 })
 
 test('register certificate fallback to unsigned', function (t) {
-  t.plan(2)
+  t.plan(4)
+
+  // Handler argument.
   createServer(TEST_CONFIG, helloWorld)
+    .once('error', t.fail)
+    .once('listening', function () {
+      request(this)
+        .get('/')
+        .set('Host', 'test.com')
+        .end(function (err, res) {
+          t.ok(err, 'should have an error')
+          t.equal(err.message, 'self signed certificate', 'should be a self signed certificate')
+          this.close()
+        }.bind(this))
+    })
+
+  // Request event.
+  createServer(TEST_CONFIG)
+    .on('request', helloWorld)
     .once('error', t.fail)
     .once('listening', function () {
       request(this)
