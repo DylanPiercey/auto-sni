@@ -31,6 +31,13 @@ var server = createServer({
 	agreeTos: true, // Required for letsencrypt.
 	debug: true, // Add console messages and uses staging LetsEncrypt server. (Disable in production)
 	domains: ["test.com", "(dev|staging|production).test.com"], // Optional list of allowed domains (uses pathtoregexp)
+	bundles: { // (Optional)
+		"test.com": [ // Groups all hostnames in the array into the "test.com" certificate.
+			"dev.test.com",
+			"staging.test.com",
+			"production.test.com"
+		]
+	},
 	forceSSL: true, // Make this false to disable auto http->https redirects (default true).
 	ports: {
 		http: 80, // Optionally override the default http port.
@@ -130,6 +137,7 @@ These will likely increase over time. There are also talks of LetsEncrypt creati
 
 The current rates are:
 
+* 100 domains per bundle.
 * 10 new registrations every 3 hours.
 * 5 certificates per domain every 7 days.
 
