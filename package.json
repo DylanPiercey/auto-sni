@@ -1,6 +1,6 @@
 {
   "name": "auto-sni",
-  "version": "0.9.9",
+  "version": "0.9.10",
   "description": "Automatically generate tls credentials using letsencrypt.",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "main": "lib/index.js",
@@ -36,6 +36,7 @@
     "tape": "^4.4.0"
   },
   "dependencies": {
+    "bluebird": "^3.3.1",
     "letsencrypt": "^1.4.3",
     "mkdirp-promise": "^1.0.3",
     "mz": "^2.3.1",
