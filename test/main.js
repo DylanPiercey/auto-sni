@@ -77,7 +77,6 @@ test('register certificate with letsencrypt', function (t) {
 
         hostile.set('127.0.0.1', host, function (err) {
           if (err) return t.fail(err)
-          // TODO: Bind host in /etc/hosts and request it locally then remove it.
           request(url + ':' + server.address().port)
             .get('/')
             .end(function (err, res) {
