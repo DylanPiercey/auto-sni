@@ -10,7 +10,7 @@
     "url": "https://github.com/DylanPiercey/auto-sni"
   },
   "scripts": {
-    "test": "standard --verbose | snazzy && node ./test main"
+    "test": "standard --verbose | snazzy && sudo node ./test main"
   },
   "keywords": [
     "http",
@@ -28,18 +28,19 @@
     "web"
   ],
   "devDependencies": {
-    "ngrok": "^0.2.2",
+    "hostile": "^1.0.2",
+    "ngrok": "^2.1.7",
     "snazzy": "^3.0.0",
-    "standard": "^6.0.5",
+    "standard": "^6.0.8",
     "supertest": "^1.2.0",
     "tap-spec": "^4.1.1",
-    "tape": "^4.4.0"
+    "tape": "^4.5.1"
   },
   "dependencies": {
-    "bluebird": "^3.3.1",
+    "bluebird": "^3.3.4",
     "letsencrypt": "^1.4.3",
-    "mkdirp-promise": "^1.0.3",
-    "mz": "^2.3.1",
+    "mkdirp-promise": "^1.0.4",
+    "mz": "^2.4.0",
     "node-static": "^0.7.7",
     "path-to-regexp": "^1.2.1",
     "safetimeout": "^0.1.1"

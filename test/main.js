@@ -1,8 +1,10 @@
 var test = require('tape')
-// var ngrok = require('ngrok')
+var ngrok = require('ngrok')
+var hostile = require('hostile')
 var request = require('supertest')
 var createServer = require('../')
 var TEST_CONFIG = {
+  debug: true,
   email: 'autosni.github@gmail.com',
   agreeTos: true,
   // Explicitly use new ports.
@@ -62,22 +64,33 @@ test('register certificate fallback to unsigned', function (t) {
 })
 
 /** These tests are a WIP currently ngrok requires Pro to use custom TLS so an alternative is needed */
-// test('register certificate with letsencrypt', function (t) {
-//   t.plan(2)
-//   createServer(TEST_CONFIG, helloWorld)
-//     .once('error', t.fail)
-//     .once('listening', function () {
-//       ngrok.connect({ port: this.address().port, proto: 'tls' }, function (err, url) {
-//         if (err) return t.fail(err)
-//         request(url)
-//           .get('/')
-//           .end(function (err, res) {
-//             ngrok.disconnect(url)
-//             server.close()
-//           })
-//       })
-//     })
-// })
+test('register certificate with letsencrypt', function (t) {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+  t.plan(1)
+  createServer(TEST_CONFIG, helloWorld)
+    .once('error', t.fail)
+    .once('listening', function () {
+      var server = this
+      ngrok.connect({ port: server.http.address().port }, function (err, url) {
+        if (err) return t.fail(err)
+        var host = url.replace('https://', '')
+
+        hostile.set('127.0.0.1', host, function (err) {
+          if (err) return t.fail(err)
+          // TODO: Bind host in /etc/hosts and request it locally then remove it.
+          request(url + ':' + server.address().port)
+            .get('/')
+            .end(function (err, res) {
+              if (err) return t.fail(err)
+              t.equal(res.text, 'Hello World\n', 'should respond to https request')
+              ngrok.disconnect(url)
+              server.close()
+              hostile.remove('127.0.0.1', host)
+            })
+        })
+      })
+    })
+})
 
 /**
  * Generic hello world server responder.
