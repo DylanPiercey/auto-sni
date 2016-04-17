@@ -1,6 +1,6 @@
 {
   "name": "auto-sni",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Automatically generate tls credentials using letsencrypt.",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "main": "lib/index.js",

@@ -4,6 +4,7 @@
 # Auto SNI
 
 SSL Certificates using SNI with almost zero configuration for free with https://letsencrypt.org!
+
 If you have any questions, throw them up on gitter.
 
 # Installation
@@ -28,7 +29,7 @@ var server = createServer({
 	email: ..., // Emailed when certificates expire.
 	agreeTos: true, // Required for letsencrypt.
 	debug: true, // Add console messages and uses staging LetsEncrypt server. (Disable in production)
-	domains: ["test.com", "www.test.com"], // List of accepted domain names. (You can use nested arrays to register bundles with LE).
+	domains: ["mysite.com", ["test.com", "www.test.com"]], // List of accepted domain names. (You can use nested arrays to register bundles with LE).
 	forceSSL: true, // Make this false to disable auto http->https redirects (default true).
 	ports: {
 		http: 80, // Optionally override the default http port.
@@ -124,7 +125,7 @@ For development it's best to set the "ports" option manually to something like:
 
 # Rate Limits
 Currently LetsEncrypt imposes some rate limits on certificate creation.
-[Click here for the current rate limites.](https://community.letsencrypt.org/t/rate-limits-for-lets-encrypt/6769)
+[Click here for the current rate limits.](https://community.letsencrypt.org/t/rate-limits-for-lets-encrypt/6769)
 
 ### Contributions
 
