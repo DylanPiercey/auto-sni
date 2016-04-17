@@ -3,6 +3,8 @@ var ngrok = require('ngrok')
 var hostile = require('hostile')
 var request = require('supertest')
 var createServer = require('../')
+test.onFinish(process.exit)
+
 var TEST_CONFIG = {
   debug: true,
   email: 'autosni.github@gmail.com',
@@ -12,14 +14,16 @@ var TEST_CONFIG = {
 }
 
 test('required fields', function (t) {
-  t.plan(4)
+  t.plan(5)
   t.throws(createServer.bind(null), TypeError, 'options are required')
   t.throws(createServer.bind(null, { agreeTos: true }), /Email is required/, 'email is required')
   t.throws(createServer.bind(null, { email: 'a@b.com' }), /Must agree to LE TOS/, 'tos is required')
+  t.throws(createServer.bind(null, { agreeTos: true, email: 'a@b.com' }), /Domains option must be a non-empty array/, 'domains is required')
 
   createServer({
     email: 'a@b.com',
     agreeTos: true,
+    domains: ['localhost'],
     // We only use ports here to avoid EACCES.
     ports: { http: 3000, https: 3001 }
   })
@@ -34,12 +38,11 @@ test('register certificate fallback to unsigned', function (t) {
   t.plan(4)
 
   // Handler argument.
-  createServer(TEST_CONFIG, helloWorld)
+  createServer(Object.assign({ domains: ['127.0.0.1'] }, TEST_CONFIG), helloWorld)
     .once('error', t.fail)
     .once('listening', function () {
       request(this)
         .get('/')
-        .set('Host', 'test.com')
         .end(function (err, res) {
           t.ok(err, 'should have an error')
           t.equal(err.message, 'self signed certificate', 'should be a self signed certificate')
@@ -48,13 +51,12 @@ test('register certificate fallback to unsigned', function (t) {
     })
 
   // Request event.
-  createServer(TEST_CONFIG)
+  createServer(Object.assign({ domains: ['127.0.0.1'] }, TEST_CONFIG))
     .on('request', helloWorld)
     .once('error', t.fail)
     .once('listening', function () {
       request(this)
         .get('/')
-        .set('Host', 'test.com')
         .end(function (err, res) {
           t.ok(err, 'should have an error')
           t.equal(err.message, 'self signed certificate', 'should be a self signed certificate')
@@ -65,30 +67,37 @@ test('register certificate fallback to unsigned', function (t) {
 
 /** These tests are a WIP currently ngrok requires Pro to use custom TLS so an alternative is needed */
 test('register certificate with letsencrypt', function (t) {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
   t.plan(1)
-  createServer(TEST_CONFIG, helloWorld)
-    .once('error', t.fail)
-    .once('listening', function () {
-      var server = this
-      ngrok.connect({ port: server.http.address().port }, function (err, url) {
-        if (err) return t.fail(err)
-        var host = url.replace('https://', '')
+  var testPorts = { http: 3003, https: 3004 }
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
-        hostile.set('127.0.0.1', host, function (err) {
-          if (err) return t.fail(err)
+  // Get a free subdomain.
+  ngrok.connect(testPorts.http, function (err, url) {
+    if (err) return t.fail(err)
+    var host = url.replace('https://', '')
+
+    // Set aliad for host through local machine.
+    hostile.set('127.0.0.1', host, function (err) {
+      if (err) return t.fail(err)
+
+      // Setup server
+      createServer(Object.assign({}, TEST_CONFIG, { ports: testPorts, domains: [host] }), helloWorld)
+        .once('error', t.fail)
+        .once('listening', function () {
+          var server = this
+          // Make a request to the server.
           request(url + ':' + server.address().port)
             .get('/')
             .end(function (err, res) {
               if (err) return t.fail(err)
               t.equal(res.text, 'Hello World\n', 'should respond to https request')
-              ngrok.disconnect(url)
-              server.close()
+              ngrok.kill()
               hostile.remove('127.0.0.1', host)
+              server.close()
             })
         })
-      })
     })
+  })
 })
 
 /**

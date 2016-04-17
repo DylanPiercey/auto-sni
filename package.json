@@ -1,6 +1,6 @@
 {
   "name": "auto-sni",
-  "version": "0.10.0",
+  "version": "1.0.1",
   "description": "Automatically generate tls credentials using letsencrypt.",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "main": "lib/index.js",
@@ -10,7 +10,7 @@
     "url": "https://github.com/DylanPiercey/auto-sni"
   },
   "scripts": {
-    "test": "standard --verbose | snazzy && sudo node ./test main"
+    "test": "standard --verbose | snazzy && sudo tape ./test/**/*.test.js | tap-spec"
   },
   "keywords": [
     "http",
@@ -38,11 +38,11 @@
   },
   "dependencies": {
     "bluebird": "^3.3.5",
+    "is-typeof": "^1.0.1",
     "letsencrypt": "^1.4.3",
     "mkdirp-promise": "^1.0.4",
     "mz": "^2.4.0",
     "node-static": "^0.7.7",
-    "path-to-regexp": "^1.2.1",
     "safetimeout": "^0.1.1"
   }
 }

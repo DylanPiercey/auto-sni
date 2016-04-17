@@ -4,8 +4,6 @@
 # Auto SNI
 
 SSL Certificates using SNI with almost zero configuration for free with https://letsencrypt.org!
-This module has yet to be thoroughly tested but feel free to give it a shot!
-
 If you have any questions, throw them up on gitter.
 
 # Installation
@@ -30,14 +28,7 @@ var server = createServer({
 	email: ..., // Emailed when certificates expire.
 	agreeTos: true, // Required for letsencrypt.
 	debug: true, // Add console messages and uses staging LetsEncrypt server. (Disable in production)
-	domains: ["test.com", "(dev|staging|production).test.com"], // Optional list of allowed domains (uses pathtoregexp)
-	bundles: { // **EXPERIMENTAL** (Optional)
-		"test.com": [ // Groups all hostnames in the array into the "test.com" certificate.
-			"dev.test.com",
-			"staging.test.com",
-			"production.test.com"
-		]
-	},
+	domains: ["test.com", "www.test.com"], // List of accepted domain names. (You can use nested arrays to register bundles with LE).
 	forceSSL: true, // Make this false to disable auto http->https redirects (default true).
 	ports: {
 		http: 80, // Optionally override the default http port.
@@ -132,15 +123,9 @@ For development it's best to set the "ports" option manually to something like:
 ```
 
 # Rate Limits
-Currently LetsEncrypt beta imposes some rate limits on certificate creation.
-These will likely increase over time. There are also talks of LetsEncrypt creating a form to increase the amount.
-
-The current rates are:
-
-* 100 domains per bundle.
-* 10 new registrations every 3 hours.
-* 5 certificates per domain every 7 days.
+Currently LetsEncrypt imposes some rate limits on certificate creation.
+[Click here for the current rate limites.](https://community.letsencrypt.org/t/rate-limits-for-lets-encrypt/6769)
 
 ### Contributions
 
-Please feel free to create a PR!
+Please use `npm test` for tests and feel free to create a PR!
