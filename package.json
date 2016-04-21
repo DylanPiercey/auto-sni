@@ -1,6 +1,6 @@
 {
   "name": "auto-sni",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Automatically generate tls credentials using letsencrypt.",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "main": "lib/index.js",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "hostile": "^1.0.2",
     "ngrok": "^2.1.7",
+    "object-assign": "^4.0.1",
     "snazzy": "^3.0.1",
     "standard": "^6.0.8",
     "supertest": "^1.2.0",

@@ -2,6 +2,7 @@ var test = require('tape')
 var ngrok = require('ngrok')
 var hostile = require('hostile')
 var request = require('supertest')
+var assign = require('object-assign')
 var createServer = require('../')
 test.onFinish(process.exit)
 
@@ -38,7 +39,7 @@ test('register certificate fallback to unsigned', function (t) {
   t.plan(4)
 
   // Handler argument.
-  createServer(Object.assign({ domains: ['127.0.0.1'] }, TEST_CONFIG), helloWorld)
+  createServer(assign({ domains: ['127.0.0.1'] }, TEST_CONFIG), helloWorld)
     .once('error', t.fail)
     .once('listening', function () {
       request(this)
@@ -51,7 +52,7 @@ test('register certificate fallback to unsigned', function (t) {
     })
 
   // Request event.
-  createServer(Object.assign({ domains: ['127.0.0.1'] }, TEST_CONFIG))
+  createServer(assign({ domains: ['127.0.0.1'] }, TEST_CONFIG))
     .on('request', helloWorld)
     .once('error', t.fail)
     .once('listening', function () {
@@ -76,12 +77,12 @@ test('register certificate with letsencrypt', function (t) {
     if (err) return t.fail(err)
     var host = url.replace('https://', '')
 
-    // Set aliad for host through local machine.
+    // Set alias for host through local machine.
     hostile.set('127.0.0.1', host, function (err) {
       if (err) return t.fail(err)
 
       // Setup server
-      createServer(Object.assign({}, TEST_CONFIG, { ports: testPorts, domains: [host] }), helloWorld)
+      createServer(assign({}, TEST_CONFIG, { ports: testPorts, domains: [host] }), helloWorld)
         .once('error', t.fail)
         .once('listening', function () {
           var server = this
