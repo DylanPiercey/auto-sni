@@ -1,4 +1,4 @@
-1.1.0 2016-04-23 (Will reset renew certificates)
+1.1.1 2016-04-23 (Will reset renew certificates)
 ==================
   * Clears certiciate when switching between debug modes.
   * Clears certificate when bundle changes (previously bundles were tied to the first domain).
