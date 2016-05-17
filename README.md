@@ -95,7 +95,7 @@ var createServer = require("auto-sni");
 var restify      = require("restify");
 
 // Override the https module in AutoSNI with restify.
-createServer.https = restify.createServer;
+createServer.https = restify;
 
 // Use a special restify option.
 var app = createServer({ email: ..., agreeTos: true, restify: true });
