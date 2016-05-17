@@ -1,3 +1,7 @@
+1.1.3 2016-05-16 (Will reset renew certificates)
+==================
+  * Update dependencies (fixes issue with node 6).
+
 1.1.1 2016-04-23 (Will reset renew certificates)
 ==================
   * Clears certiciate when switching between debug modes.

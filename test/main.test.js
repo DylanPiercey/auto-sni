@@ -11,7 +11,7 @@ var TEST_CONFIG = {
   email: 'autosni.github@gmail.com',
   agreeTos: true,
   // Explicitly use new ports.
-  ports: { http: undefined, https: undefined }
+  ports: { http: null, https: null }
 }
 
 test('required fields', function (t) {
