@@ -1,4 +1,4 @@
-1.1.3 2016-05-16 (Will reset renew certificates)
+1.1.3 2016-05-16
 ==================
   * Update dependencies (fixes issue with node 6).
 
