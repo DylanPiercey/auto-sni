@@ -1,3 +1,7 @@
+1.2.1 2016-05-16
+==================
+  * Fix issue with self signed fallback certificate.
+
 1.1.3 2016-05-16
 ==================
   * Update dependencies (fixes issue with node 6).
