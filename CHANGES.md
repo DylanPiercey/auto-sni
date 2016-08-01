@@ -1,3 +1,7 @@
+1.3.0 2016-08-01
+==================
+  * Add ability to change redirect code when `forceSSL` is enabled.
+
 1.2.1 2016-05-16
 ==================
   * Fix issue with self signed fallback certificate.
