@@ -1,3 +1,7 @@
+1.5.0 2016-26
+  * Fix mkdirp issue and lock down `letsencrypt@1.5.1` until `auto-sni@2.0`.
+  * Fixes issue when using `letsencrypt@1.5.8`.
+
 1.3.0 2016-08-01
 ==================
   * Add ability to change redirect code when `forceSSL` is enabled.
@@ -12,7 +16,7 @@
 
 1.1.1 2016-04-23 (Will reset renew certificates)
 ==================
-  * Clears certiciate when switching between debug modes.
+  * Clears certificate when switching between debug modes.
   * Clears certificate when bundle changes (previously bundles were tied to the first domain).
   * Attempt to fix some issues with restify.
 

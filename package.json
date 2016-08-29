@@ -1,49 +1,51 @@
 {
   "name": "auto-sni",
-  "version": "1.4.0",
   "description": "Automatically generate tls credentials using letsencrypt.",
+  "version": "1.4.0",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
-  "main": "lib/index.js",
+  "bugs": "https://github.com/DylanPiercey/auto-sni/issues",
+  "dependencies": {
+    "bluebird": "^3.4.3",
+    "is-typeof": "^1.0.2",
+    "letsencrypt": "1.5.1",
+    "mkdirp-then": "^1.2.0",
+    "mz": "^2.4.0",
+    "safetimeout": "^0.1.1",
+    "serve-static": "^1.11.1"
+  },
+  "devDependencies": {
+    "hostile": "^1.0.3",
+    "ngrok": "^2.2.2",
+    "object-assign": "^4.1.0",
+    "snazzy": "^4.0.1",
+    "standard": "^8.0.0",
+    "supertest": "^2.0.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.0"
+  },
+  "homepage": "https://github.com/DylanPiercey/auto-sni",
+  "keywords": [
+    "auto",
+    "auto-sni",
+    "http",
+    "https",
+    "lets-encrypt",
+    "letsencrypt",
+    "letsencrypt-auto",
+    "renew",
+    "secure",
+    "sni",
+    "ssl",
+    "tls",
+    "web"
+  ],
   "license": "MIT",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/DylanPiercey/auto-sni"
   },
   "scripts": {
     "test": "standard --verbose | snazzy && sudo tape ./test/**/*.test.js | tap-spec"
-  },
-  "keywords": [
-    "http",
-    "https",
-    "ssl",
-    "tls",
-    "secure",
-    "sni",
-    "auto-sni",
-    "lets-encrypt",
-    "letsencrypt",
-    "letsencrypt-auto",
-    "auto",
-    "renew",
-    "web"
-  ],
-  "devDependencies": {
-    "hostile": "^1.0.3",
-    "ngrok": "^2.2.2",
-    "object-assign": "^4.1.0",
-    "snazzy": "^4.0.0",
-    "standard": "^7.1.2",
-    "supertest": "^2.0.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
-  },
-  "dependencies": {
-    "bluebird": "^3.4.1",
-    "is-typeof": "^1.0.2",
-    "letsencrypt": "^1.5.1",
-    "mkdirp-promise": "^2.0.0",
-    "mz": "^2.4.0",
-    "safetimeout": "^0.1.1",
-    "serve-static": "^1.11.1"
   }
 }
