@@ -1,11 +1,11 @@
 {
   "name": "auto-sni",
   "description": "Automatically generate tls credentials using letsencrypt.",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "bugs": "https://github.com/DylanPiercey/auto-sni/issues",
   "dependencies": {
-    "bluebird": "^3.4.3",
+    "bluebird": "^3.4.6",
     "is-typeof": "^1.0.2",
     "letsencrypt": "1.5.1",
     "mkdirp-then": "^1.2.0",

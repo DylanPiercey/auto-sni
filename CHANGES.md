@@ -1,3 +1,8 @@
+1.5.1 2016-26
+==================
+  * Update letsencrypt rate limit link in docs.
+  * Update bluebird.
+
 1.5.0 2016-26
 ==================
   * Fix mkdirp issue and lock down `letsencrypt@1.5.1` until `auto-sni@2.0`.
