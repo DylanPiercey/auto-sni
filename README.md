@@ -127,7 +127,7 @@ For development it's best to set the "ports" option manually to something like:
 
 # Rate Limits
 Currently LetsEncrypt imposes some rate limits on certificate creation.
-[Click here for the current rate limits.](https://community.letsencrypt.org/t/rate-limits-for-lets-encrypt/6769)
+[Click here for the current rate limits.](https://letsencrypt.org/docs/rate-limits/)
 
 ### Contributions
 
