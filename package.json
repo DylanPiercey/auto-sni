@@ -46,6 +46,6 @@
     "url": "https://github.com/DylanPiercey/auto-sni"
   },
   "scripts": {
-    "test": "standard --verbose | snazzy && sudo tape ./test/**/*.test.js | tap-spec"
+    "test": "standard --verbose | snazzy && sudo node_modules/.bin/tape ./test/**/*.test.js | tap-spec"
   }
 }
