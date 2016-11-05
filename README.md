@@ -125,6 +125,9 @@ For development it's best to set the "ports" option manually to something like:
 // Access server on localhost:3002
 ```
 
+# Location of certificates
+For production you may wish to start backing up or distrubting the certs accross multipule sersers. Letsencrypt stores the certificates under `~/letsencrypt`. During development you may find you need to refresh the cerificatess. In that case you can simply remove the directory.
+
 # Rate Limits
 Currently LetsEncrypt imposes some rate limits on certificate creation.
 [Click here for the current rate limits.](https://letsencrypt.org/docs/rate-limits/)
