@@ -5,23 +5,27 @@
   "author": "Dylan Piercey <pierceydylan@gmail.com>",
   "bugs": "https://github.com/DylanPiercey/auto-sni/issues",
   "dependencies": {
-    "bluebird": "^3.4.6",
+    "bluebird": "^3.4.7",
     "is-typeof": "^1.0.2",
-    "letsencrypt": "1.5.1",
+    "le-challenge-fs": "^2.0.8",
+    "le-sni-auto": "^2.1.0",
+    "le-store-certbot": "^2.0.3",
+    "letsencrypt": "2.1.8",
     "mkdirp-then": "^1.2.0",
-    "mz": "^2.4.0",
+    "mz": "^2.6.0",
+    "ngrok": "^2.2.4",
     "safetimeout": "^0.1.1",
     "serve-static": "^1.11.1"
   },
   "devDependencies": {
-    "hostile": "^1.0.3",
-    "ngrok": "^2.2.2",
+    "hostile": "^1.1.1",
+    "ngrok": "^2.2.4",
     "object-assign": "^4.1.0",
-    "snazzy": "^4.0.1",
-    "standard": "^8.0.0",
-    "supertest": "^2.0.0",
+    "snazzy": "^5.0.0",
+    "standard": "^8.6.0",
+    "supertest": "^2.0.1",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
+    "tape": "^4.6.3"
   },
   "homepage": "https://github.com/DylanPiercey/auto-sni",
   "keywords": [

@@ -35,7 +35,7 @@ test('required fields', function (t) {
     })
 })
 
-test('register certificate fallback to self-signed', function (t) {
+test.skip('register certificate fallback to self-signed', function (t) {
   t.plan(4)
 
   // Handler argument.
