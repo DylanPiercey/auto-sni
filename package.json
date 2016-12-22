@@ -8,12 +8,10 @@
     "bluebird": "^3.4.7",
     "is-typeof": "^1.0.2",
     "le-challenge-fs": "^2.0.8",
-    "le-sni-auto": "^2.1.0",
     "le-store-certbot": "^2.0.3",
     "letsencrypt": "2.1.8",
     "mkdirp-then": "^1.2.0",
     "mz": "^2.6.0",
-    "ngrok": "^2.2.4",
     "safetimeout": "^0.1.1",
     "serve-static": "^1.11.1"
   },
