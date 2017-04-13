@@ -1,3 +1,10 @@
+2.1.1 2017-04-13
+==================
+  * Internal implementation switched to use greenlock-express.
+  * No longer falls back to self signed when unable to communicate with letsencrypt.
+  * Removed ability to disable https redirection (should just use vanilla http server).
+  * Simplified api.
+
 1.5.2 2016-09-21
 ==================
   * Fix travis ci.

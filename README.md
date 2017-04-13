@@ -17,7 +17,6 @@ npm install auto-sni
 # Features
 + Fetch SSL certificates from letsencrypt.
 + Automatically renew certificates.
-+ If creating a certificate fails it will fall back to a simple self signed certificate.
 + Forward all incoming http requests to https.
 
 # Example
@@ -30,8 +29,6 @@ var server = createServer({
 	agreeTos: true, // Required for letsencrypt.
 	debug: true, // Add console messages and uses staging LetsEncrypt server. (Disable in production)
 	domains: ["mysite.com", ["test.com", "www.test.com"]], // List of accepted domain names. (You can use nested arrays to register bundles with LE).
-	forceSSL: true, // Make this false to disable auto http->https redirects (default true).
-	redirectCode: 301, // If forceSSL is true, decide if redirect should be 301 (permanent) or 302 (temporary). Defaults to 302
 	ports: {
 		http: 80, // Optionally override the default http port.
 		https: 443 // // Optionally override the default https port.
@@ -53,7 +50,7 @@ var app          = express();
 
 app.get("/test", ...);
 
-createServer({ email: ..., agreeTos: true }, app);
+createServer({ email: ..., domains: ..., agreeTos: true }, app);
 ```
 
 ### Usage with koa.
@@ -64,7 +61,7 @@ var app          = koa();
 
 app.use(...);
 
-createServer({ email: ..., agreeTos: true }, app.callback());
+createServer({ email: ..., domains: ..., agreeTos: true }, app.callback());
 ```
 
 ### Usage with rill.
@@ -75,7 +72,7 @@ var app          = rill();
 
 app.get("/test", ...);
 
-createServer({ email: ..., agreeTos: true }, app.handler());
+createServer({ email: ..., domains: ..., agreeTos: true }, app.handler());
 ```
 
 ### Usage with hapi.
@@ -84,7 +81,7 @@ createServer({ email: ..., agreeTos: true }, app.handler());
 var createServer = require("auto-sni");
 var hapi         = require("hapi");
 var server       = new hapi.Server();
-var secureServer = createServer({ email: ..., agreeTos: true });
+var secureServer = createServer({ email: ..., domains: ..., agreeTos: true });
 
 server.connection({ listener: secureServer, autoListen: false, tls: true });
 ```
@@ -94,13 +91,11 @@ server.connection({ listener: secureServer, autoListen: false, tls: true });
 // Untested (Let me know in gitter if this doesn't work.)
 var createServer = require("auto-sni");
 var restify      = require("restify");
+var app          = restify.createServer({ name: 'myapp', version: '1.0.0' });
 
-// Override the https module in AutoSNI with restify.
-createServer.https = restify;
-
-// Use a special restify option.
-var app = createServer({ email: ..., agreeTos: true, restify: true });
 app.get("/test", ...);
+
+createServer({ email: ..., domains: ..., agreeTos: true }, app.server);
 ```
 
 # Root Access
@@ -116,21 +111,18 @@ sudo setcap cap_net_bind_service=+ep $(which node)
 For development it's best to set the "ports" option manually to something like:
 ```js
 {
-	ports: {
-		http: 3001,
-		https: 3002
-	}
+  ports: {
+    http: 3001,
+    https: 3002
+  }
 }
 
 // Access server on localhost:3002
 ```
 
-# Location of certificates
-For production you may wish to start backing up or distributing the certificates across multiple sersers. Auto-SNI stores the certificates under the `~/letsencrypt` folder. During development you may find you need to refresh/reset these cerificates, in which case you can simply remove the directory.
-
 # Rate Limits
 Currently LetsEncrypt imposes some rate limits on certificate creation.
-[Click here for the current rate limits.](https://letsencrypt.org/docs/rate-limits/)
+[Click here for the current rate limits.](https://community.letsencrypt.org/t/rate-limits-for-lets-encrypt/6769)
 
 ### Contributions
 
