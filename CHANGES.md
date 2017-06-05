@@ -1,3 +1,7 @@
+2.2.0 2017-06-05
+==================
+  * Flatten domains option for compatibilty with @1.x
+
 2.1.1 2017-04-13
 ==================
   * Internal implementation switched to use greenlock-express.
