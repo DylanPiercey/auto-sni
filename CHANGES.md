@@ -1,3 +1,7 @@
+2.2.1 2017-06-11
+==================
+  * Update readme regarding root access to privileged ports.
+
 2.2.0 2017-06-05
 ==================
   * Flatten domains option for compatibilty with @1.x
