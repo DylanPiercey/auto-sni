@@ -105,7 +105,7 @@ These ports are typically restricted by the operating system.
 In production (on linux servers) you can use the following command to give Node access to these ports.
 
 ```console
-sudo setcap cap_net_bind_service=+ep $(which node)
+sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
 ```
 
 For development it's best to set the "ports" option manually to something like:
