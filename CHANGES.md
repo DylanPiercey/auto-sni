@@ -1,4 +1,4 @@
-2.3.0 2017-07-22
+2.3.0, 2.3.1 2017-07-22
 ==================
   * Add ability to approve domains with a function.
 
