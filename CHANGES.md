@@ -1,3 +1,7 @@
+2.3.0 2017-07-22
+==================
+  * Add ability to approve domains with a function.
+
 2.2.1 2017-06-11
 ==================
   * Update readme regarding root access to privileged ports.

@@ -98,6 +98,18 @@ app.get("/test", ...);
 createServer({ email: ..., domains: ..., agreeTos: true }, app.server);
 ```
 
+# Dynamic Domains
+You can also specify an async function to approve domains like so:
+
+```js
+createServer({
+	...,
+	domains: (options, cert, cb) => {
+		setTimeout(() => cb({ options, cert }), 1000)
+	}
+})
+```
+
 # Root Access
 AutoSNI requires access to low level ports 80 (http) and 443 (https) to operate by default.
 These ports are typically restricted by the operating system.
