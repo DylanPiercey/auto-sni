@@ -1,3 +1,7 @@
+2.3.2 2017-10-05
+==================
+  * Add `dir` option to readme example.
+
 2.3.0, 2.3.1 2017-07-22
 ==================
   * Add ability to approve domains with a function.
@@ -8,7 +12,7 @@
 
 2.2.0 2017-06-05
 ==================
-  * Flatten domains option for compatibilty with @1.x
+  * Flatten domains option for compatibility with @1.x
 
 2.1.1 2017-04-13
 ==================
